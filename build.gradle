@@ -5,10 +5,14 @@ import org.jetbrains.changelog.ExtensionsKt
 buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
-        maven { url = 'https://maven.moddingx.org' }
+        maven { url 'https://maven.tterrag.com' }
         mavenCentral()
     }
     dependencies {
+        // Include Ender IO API for compilation
+        compileOnly fg.deobf("com.enderio:EnderIO:<VERSION>:api")
+        // Use EnderIO at runtime
+        runtimeOnly fg.deobf("com.enderio.EnderIO:<VERSION>")
         classpath 'org.spongepowered:mixingradle:0.7.+'
         classpath 'org.moddingx:ModGradle:4.0.+'
     }
